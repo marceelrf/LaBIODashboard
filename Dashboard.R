@@ -13,17 +13,16 @@ header <- dashboardHeader(title = "LaBIO - IBB/UNESP")
 
 # Sidebar
 sidebar <- dashboardSidebar(
-  sidebarMenu(
-    menuItem(icon = NULL,
-      fluidRow(
-        img(src = "labio.jpg",
-            width="100%")
-        )
-      ),
-    menuItem(
+  sidebarMenu(div(
+    fluidRow(
+      img(src = "labio.jpg",
+          width="90%",
+          align = "center"))
+    ),
+    div(
       fluidRow(
         column(width = 2,
-               h4("Bioassays and cellular dynamics lab"))
+               h5("Bioassays and cellular dynamics lab",align = "center"))
         )
       ),
     menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
