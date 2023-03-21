@@ -1,13 +1,13 @@
 library(scholar)
-library(extrafont)
-library(glue)
-library(plotly)
+#library(extrafont)
+#library(glue)
+#library(plotly)
 library(tidyverse)
 library(rentrez)
 library(XML)
 library(tokenizers)
 library(stopwords)
-library(wordcloud2)
+#library(wordcloud2)
 
 
 dash_list <- list()
