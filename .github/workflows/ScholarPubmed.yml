@@ -1,4 +1,4 @@
-name: sitemap_scraping
+name: ScholarPubmed_scraping
 
 # Controls when the action will run.
 on:
