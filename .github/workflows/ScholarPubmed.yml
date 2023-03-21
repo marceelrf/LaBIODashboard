@@ -3,7 +3,7 @@ name: ScholarPubmed_scraping
 # Controls when the action will run.
 on:
   schedule:
-    - cron:  '0 17 * * *'
+    - cron:  '5 17 * * *'
 
 jobs: 
   autoscrape:
