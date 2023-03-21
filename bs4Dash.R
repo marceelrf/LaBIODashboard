@@ -5,6 +5,8 @@ library(bs4Dash)
 library(wordcloud2)
 #https://mran.revolutionanalytics.com/snapshot/2020-04-25/web/packages/bs4Dash/vignettes/bs4cards.html
 
+
+dash_list <- readr::read_rds(file = "data/dash_list.rds")
 header <- dashboardHeader(title = "@marceelrf")
 
 sidebar <- dashboardSidebar(
@@ -42,17 +44,17 @@ sidebar <- dashboardSidebar(
 
 body <- dashboardBody(
   fluidRow(
-    bs4ValueBox(value = 21,width = 4,
+    bs4ValueBox(value = dash_list$nPub,width = 4,
                 subtitle = "Publications",
                 color = "lightblue",
                 icon = icon("folder-open",lib = "glyphicon")
     ),
-    bs4ValueBox(value = 272,width = 4,
+    bs4ValueBox(value = dash_list$nCites,width = 4,
                 subtitle = "Citations",
                 color = "lightblue",
                 icon = icon("signal",lib = "glyphicon")
     ),
-    bs4ValueBox(value = 10,width = 4,
+    bs4ValueBox(value = dash_list$hIndex,width = 4,
                 subtitle = "h-index",
                 color = "lightblue",
                 icon = icon("flash",lib = "glyphicon")
