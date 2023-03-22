@@ -2,7 +2,7 @@ name: Daily R Script
 
 on:
   schedule:
-    - cron: "20 19 * * *"
+    - cron: "51 19 * * *"
 
 jobs:
   run_r_script:
@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get install -y libcurl4-openssl-dev
-          Rscript -e 'install.packages(c("tidyverse","scholar","glue","rentrez","XML","tokenizers","stopwords"))'
+          Rscript -e 'install.packages(c("ragg","tidyverse","scholar","glue","rentrez","XML","tokenizers","stopwords"))'
       
       - name: Run R script
         run: Rscript scholar.R
