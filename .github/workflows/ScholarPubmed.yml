@@ -2,7 +2,7 @@ name: Daily R Script
 
 on:
   schedule:
-    - cron: "35 17 * * *"
+    - cron: "35 18 * * *"
 
 jobs:
   run_r_script:
@@ -15,7 +15,7 @@ jobs:
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: '4.0'
-          include_packages: tidyverse,scholar,glue,rentrez,XML,tokenizers,stopwords
+          include_packages: tidyverse,scholar,glue,rentrez,XML,tokenizers,stopwords,ragg
 
       - name: Install dependencies
         run: |
