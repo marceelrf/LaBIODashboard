@@ -2,7 +2,7 @@ name: Daily R Script
 
 on:
   schedule:
-    - cron: "59 02 * * *"
+    - cron: "59 01 * * *"
 
 jobs:
   run_r_script:
