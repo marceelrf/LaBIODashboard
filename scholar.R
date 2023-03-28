@@ -148,5 +148,5 @@ dash_list$tableSug <- tidy_pubs %>%
   group_by(title,pubid) %>%
   mutate(url = get_publication_url(id = MRF,pub_id = pubid)) %>%
   select(-pubid)
-
+dash_list$tidycites <- scholar::get_citation_history(MRF)
 readr::write_rds(x = dash_list,file = "data/dash_list.rds")

@@ -3,6 +3,7 @@ library(shinydashboard)
 library(shiny)
 library(bs4Dash)
 library(wordcloud2)
+library(plotly)
 #https://mran.revolutionanalytics.com/snapshot/2020-04-25/web/packages/bs4Dash/vignettes/bs4cards.html
 
 
@@ -61,8 +62,8 @@ body <- dashboardBody(
     )
   ),
   fluidRow(
-    bs4Card(plotOutput("ggplot"),
-      title = "Cites per year - ggplot",
+    bs4Card(plotlyOutput("pCitesPerYear"),
+      title = "Cites per year - Marcel Ferreira",
       width = 6),
     bs4Card(wordcloud2::wordcloud2Output("wc"),
             title = "Wordcloud",
@@ -83,7 +84,35 @@ ui <- bs4DashPage(header = header,
                   title = "test")
 
 server = function(input, output) {
-  output$ggplot <- renderPlot(p_cites_per_year)
+  output$pCitesPerYear <- renderPlotly(
+    dash_list$tidycites %>%
+      plot_ly(x= ~year, y= ~cites,
+              type = "scatter",
+              mode = "lines+markers",
+              text = ~paste("Year: ", year,"\n Cites:",cites),
+              marker = list(color = "#800000",
+                            size = 15
+              ),
+              line = list(
+                color = "#800000",
+                size = 5
+              )
+      ) %>%
+      layout(
+        xaxis = list(
+          title = "Year",
+          dtick = 1,
+          tick0 = 2015,
+          tickmode = "linear"
+        ),
+        yaxis = list(
+          title = "Cites",
+          dtick = 20,
+          tick0 = 0,
+          tickmode = "linear"
+        )
+      )
+  )
   output$wc <- wordcloud2::renderWordcloud2(
     wordcloud2(
       slice_max(freq_tokens,order_by = n,n = 100,with_ties = F),
