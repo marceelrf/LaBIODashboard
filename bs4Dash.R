@@ -4,6 +4,7 @@ library(shiny)
 library(bs4Dash)
 library(wordcloud2)
 library(plotly)
+library(DT)
 #https://mran.revolutionanalytics.com/snapshot/2020-04-25/web/packages/bs4Dash/vignettes/bs4cards.html
 
 
@@ -37,9 +38,8 @@ sidebar <- dashboardSidebar(
                  color: #b3f0ff;
       }"),
       "Medical physicist and PhD in Biotechnology.\n
-      Works on the development of tools for bone biomaterials analysis."),
-    hr(),
-    h4("Follow me")
+      Works with big omics data for bone biomaterials analysis."),
+    hr()
   )
 )
 
@@ -70,7 +70,10 @@ body <- dashboardBody(
             width = 6)
   ),
   fluidRow(
-    h1("selected publications - TABELA")
+    bs4Card(
+      dataTableOutput("table"),
+      title = "selected publications",
+      width = 12)
   )
 )
 
@@ -81,7 +84,7 @@ ui <- bs4DashPage(header = header,
                   sidebar = sidebar,
                   body = body,
                   footer = footer,
-                  title = "test")
+                  title = "@marceelrf")
 
 server = function(input, output) {
   output$pCitesPerYear <- renderPlotly(
@@ -115,12 +118,53 @@ server = function(input, output) {
   )
   output$wc <- wordcloud2::renderWordcloud2(
     wordcloud2(
-      slice_max(freq_tokens,order_by = n,n = 100,with_ties = F),
+      slice_max(dash_list$freq_tokens,order_by = n,n = 100,with_ties = F),
                size = .4,
                minRotation = -pi/2,
                maxRotation = -pi/2,
       #color ="random-light",backgroundColor = "grey50"
       ))
+
+  my_table <- reactive({
+    datatable(
+      dash_list$tableSug,
+      options = list(
+        columnDefs = list(
+          list(
+            targets = 1,
+            render = JS(
+              "function(data, type, row, meta) {",
+              "  if (type === 'display') {",
+              "    return '<b><i>' + data + '</i></b>';",
+              "  } else {",
+              "    return data;",
+              "  }",
+              "}"
+            )
+          ),
+          list(
+            targets = 2,
+            render = JS(
+              "function(data, type, row, meta) {",
+              "  if (type === 'display') {",
+              "    return '<a href=\"' + data + '\">' + row[2] + '</a>';",
+              "  } else {",
+              "    return data;",
+              "  }",
+              "}"
+            )
+          )
+        ),
+        rownames = FALSE,
+        lengthMenu  = FALSE,
+        searching = FALSE
+      ),
+      escape = FALSE
+    )
+  })
+  output$table <- DT::renderDataTable({
+    my_table()
+  })
 }
 
 shinyApp(ui = ui,server = server)
