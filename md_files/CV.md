@@ -26,4 +26,4 @@
 
 -   *Visiting scholar (FAPESP scholarship)*, **2022-2022**. Witek Lab, NYU - New York University, Dental School;
 
--   *Data consultant*, **2023** - . dm2, fruits and juices.
+-   *Data consultant*, **since 2023**. dm2, fruits and juices.

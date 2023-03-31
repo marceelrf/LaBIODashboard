@@ -32,11 +32,23 @@ sidebar <- dashboardSidebar(
                   text-align: center;
        }")),
     hr(),
+    p(id= "sidetext2",
+      tags$style("#sidetext2{
+                 text-align: justify;
+                 background-color: 8f8f8f;
+                 color: #ff8080;
+                 padding-right: 5%;
+                 padding-left: 5%;
+      }"),
+      "Data Scientist | R | Shiny | Python | Researcher | Biomaterials | Bioinformatics | 3D Bioprinting"),
+    hr(),
     p(id= "sidetext",
       tags$style("#sidetext{
                  text-align: justify;
                  background-color: 8f8f8f;
                  color: #b3f0ff;
+                 padding-right: 5%;
+                 padding-left: 5%;
       }"),
       "Medical physicist and PhD in Biotechnology.\n
       Works with big omics data for bone biomaterials analysis."),
@@ -81,7 +93,9 @@ body <- dashboardBody(
                  title = "selected publications",
                  width = 12)
                )
-             )
+             ),
+    tabPanel("Presentations"),
+    tabPanel("Shiny apps")
   )
 )
 
