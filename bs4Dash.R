@@ -44,36 +44,43 @@ sidebar <- dashboardSidebar(
 )
 
 body <- dashboardBody(
-  fluidRow(
-    bs4ValueBox(value = dash_list$nPub,width = 4,
-                subtitle = "Publications",
-                color = "lightblue",
-                icon = icon("folder-open",lib = "glyphicon")
-    ),
-    bs4ValueBox(value = dash_list$nCites,width = 4,
-                subtitle = "Citations",
-                color = "lightblue",
-                icon = icon("signal",lib = "glyphicon")
-    ),
-    bs4ValueBox(value = dash_list$hIndex,width = 4,
-                subtitle = "h-index",
-                color = "lightblue",
-                icon = icon("flash",lib = "glyphicon")
-    )
-  ),
-  fluidRow(
-    bs4Card(plotlyOutput("pCitesPerYear"),
-      title = "Cites per year - Marcel Ferreira",
-      width = 6),
-    bs4Card(wordcloud2::wordcloud2Output("wc"),
-            title = "Wordcloud",
-            width = 6)
-  ),
-  fluidRow(
-    bs4Card(
-      dataTableOutput("table"),
-      title = "selected publications",
-      width = 12)
+  tabsetPanel(
+    selected = "Scientific Profile",
+    tabPanel(title = "CV",
+             includeMarkdown(path = "md_files/CV.md")),
+    tabPanel(title = "Scientific Profile",
+             fluidRow(
+               bs4ValueBox(value = dash_list$nPub,width = 4,
+                           subtitle = "Publications",
+                           color = "lightblue",
+                           icon = icon("folder-open",lib = "glyphicon")
+               ),
+               bs4ValueBox(value = dash_list$nCites,width = 4,
+                           subtitle = "Citations",
+                           color = "lightblue",
+                           icon = icon("signal",lib = "glyphicon")
+               ),
+               bs4ValueBox(value = dash_list$hIndex,width = 4,
+                           subtitle = "h-index",
+                           color = "lightblue",
+                           icon = icon("flash",lib = "glyphicon")
+               )
+             ),
+             fluidRow(
+               bs4Card(plotlyOutput("pCitesPerYear"),
+                       title = "Cites per year - Marcel Ferreira",
+                       width = 6),
+               bs4Card(wordcloud2::wordcloud2Output("wc"),
+                       title = "Wordcloud",
+                       width = 6)
+             ),
+             fluidRow(
+               bs4Card(
+                 dataTableOutput("table"),
+                 title = "selected publications",
+                 width = 12)
+               )
+             )
   )
 )
 
