@@ -4,6 +4,7 @@ library(shiny)
 library(bs4Dash)
 library(wordcloud2)
 library(plotly)
+library(markdown)
 library(DT)
 #https://mran.revolutionanalytics.com/snapshot/2020-04-25/web/packages/bs4Dash/vignettes/bs4cards.html
 

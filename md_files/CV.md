@@ -20,7 +20,7 @@
 
 -   *Discipline Coordinator of Physics (Volunteer)*, **2016**-**2017**. Cursinho do IB*;*
 
--   *Master\'s Degree student (FAPESP scholarship)*, **2015**-**2017**. LaBIO - Laboratory of bioassays and cell dynamics;
+-   *Master's Degree student (FAPESP scholarship)*, **2015**-**2017**. LaBIO - Laboratory of bioassays and cell dynamics;
 
 -   *PhD student (FAPESP scholarship)*, **2017-2023**. LaBIO - Laboratory of bioassays and cell dynamics. LaBIO - Laboratory of bioassays and cell dynamics;
 
