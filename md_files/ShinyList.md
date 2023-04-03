@@ -6,7 +6,9 @@ App for building Venn diagrams.
 
 ## [MarshallsGeneNamesChecker](https://marcel-ferreira.shinyapps.io/MarshallsGeneNamesChecker/)
 
-App to check official gene names and other IDs from databases such as NCBI, ENSEMBLE and HGNC (***beta version***).
+App to check official gene names and other IDs from databases such as NCBI, ENSEMBLE and HGNC.
+
+App in ***beta version***.
 
 ## [MarshallsSciDashboard](https://marcel-ferreira.shinyapps.io/SciDashboard_marceelrf/)
 
