@@ -94,8 +94,10 @@ body <- dashboardBody(
                  width = 12)
                )
              ),
-    tabPanel("Presentations"),
-    tabPanel("Shiny apps")
+    tabPanel("Presentations",
+             includeMarkdown(path = "md_files/Press.md")),
+    tabPanel("Shiny apps",
+             includeMarkdown(path = "md_files/ShinyList.md"))
   )
 )
 
