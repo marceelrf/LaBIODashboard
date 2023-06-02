@@ -1,3 +1,5 @@
-# Coming soon!
+# Online presentations
 
-#### This section is under construction. Stay tuned!
+## Oxford Nanopore Technologies
+
+-   Paper presentation: [Accurate profiling of forensic autosomal STRs using the Oxford Nanopore Technologies MinION device](https://press31052023.netlify.app/#/title-slide)

@@ -1,16 +1,21 @@
 library(tidyverse)
 library(shinydashboard)
 library(shiny)
+library(shinyjs)
 library(bs4Dash)
 library(wordcloud2)
 library(plotly)
 library(markdown)
 library(DT)
+
 #https://mran.revolutionanalytics.com/snapshot/2020-04-25/web/packages/bs4Dash/vignettes/bs4cards.html
 
 
 dash_list <- readr::read_rds(file = "data/dash_list.rds")
 header <- dashboardHeader(title = "@marceelrf")
+
+
+
 
 sidebar <- dashboardSidebar(
   fluidRow(
@@ -57,6 +62,7 @@ sidebar <- dashboardSidebar(
 )
 
 body <- dashboardBody(
+  useShinyjs(),
   tabsetPanel(
     selected = "Scientific Profile",
     tabPanel(title = "CV",
@@ -97,7 +103,9 @@ body <- dashboardBody(
     tabPanel("Presentations",
              includeMarkdown(path = "md_files/Press.md")),
     tabPanel("Shiny apps",
-             includeMarkdown(path = "md_files/ShinyList.md"))
+             includeMarkdown(path = "md_files/ShinyList.md")),
+    tabPanel("Gallery"
+      )
   )
 )
 
