@@ -145,7 +145,7 @@ dash_list$tableSug <- tidy_pubs %>%
   arrange(desc(cites_py)) %>%
   slice_head(n = 5) %>%
   select(title,pubid) %>%
-  group_by(title,pubid) %>%
+  dplyr::group_by(title,pubid) %>%
   mutate(url = get_publication_url(id = MRF,pub_id = pubid)) %>%
   ungroup() %>%
   select(-pubid)
