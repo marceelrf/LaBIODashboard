@@ -2,7 +2,7 @@ name: Daily R Script
 
 on:
   schedule:
-    - cron: "20 17 * * *"
+    - cron: "53 18 * * *"
 
 jobs:
   run_r_script:
@@ -26,6 +26,11 @@ jobs:
       
       - name: Run R script
         run: Rscript scholar.R
+        
+      - name: Set Git user
+        run: |
+          git config user.email "marcelrodrigues45@yahoo.com.br"
+          git config user.name "Marcel Ferreira"
 
       - name: Add new files in data folder
         run: |
