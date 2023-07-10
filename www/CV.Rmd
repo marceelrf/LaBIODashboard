@@ -1,3 +1,15 @@
+## Contact information
+
+**Full name:** Marcel Rodrigues Ferreira, PhD
+
+**Phone:** +55 15 981040965
+
+**email:** marcel.ferreira [at] unesp.br - marcel [at] dm2.agr.br
+
+**LinkedIn:** <https://www.linkedin.com/in/marceelrf/>
+
+**Blog:** <https://quartodomarcel.netlify.app/>
+
 ## Education
 
 -   *PhD in Biotechnology* - **2023**. São Paulo State University (UNESP);
@@ -29,3 +41,19 @@
 -   *Data consultant*, **since 2023**. dm2, fruits and juices.
 
 -   *Postdoc* (CAPES scholarship), **since 2023**. GemBio - Molecular Genetics and Bioinformatics Laboratory - Experimental Research Unity, School of Medicine, UNESP Botucatu.
+
+## Skills
+
+-   *Communication*;
+
+-   *Leadership*;
+
+-   *Problem-solving*;
+
+-   Creative thinking;
+
+-   *Transferable skills*;
+
+-   *Interpersonal skills*;
+
+-   *Active listening*.
