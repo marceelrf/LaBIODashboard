@@ -9,6 +9,7 @@ library(markdown)
 library(DT)
 library(knitr)
 library(pandoc)
+library(rmarkdown)
 
 #https://mran.revolutionanalytics.com/snapshot/2020-04-25/web/packages/bs4Dash/vignettes/bs4cards.html
 
@@ -69,7 +70,7 @@ body <- dashboardBody(
     selected = "Scientific Profile",
     tabPanel(title = "CV",
              includeMarkdown(path = "md_files/CV.md"),
-             actionButton("downloadBtn", "Download PDF")),
+             downloadButton("downloadBtn", "Download PDF")),
     tabPanel(title = "Scientific Profile",
              fluidRow(
                bs4ValueBox(value = dash_list$nPub,width = 4,
@@ -213,17 +214,12 @@ server = function(input, output) {
 
 
   # Trigger download when the button is clicked
-  observeEvent(input$downloadBtn, {
-    pdf_file <- file.path("www", "CV.pdf")
-    if (file.exists(pdf_file)) {
-      output$downloadFile <- downloadHandler(
-        filename = "CV.pdf",
-        content = function(file) {
-          file.copy(here::here(pdf_file), file)
-        }
-      )
+  output$downloadBtn <- downloadHandler(
+    filename = function() {"marcelferreira_CV.pdf"},
+    content = function(file) {
+      file.copy("www/CV.pdf", file)
     }
-  })
+    )
 
 }
 
