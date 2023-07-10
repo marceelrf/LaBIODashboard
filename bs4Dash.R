@@ -7,6 +7,8 @@ library(wordcloud2)
 library(plotly)
 library(markdown)
 library(DT)
+library(knitr)
+library(pandoc)
 
 #https://mran.revolutionanalytics.com/snapshot/2020-04-25/web/packages/bs4Dash/vignettes/bs4cards.html
 
@@ -66,7 +68,8 @@ body <- dashboardBody(
   tabsetPanel(
     selected = "Scientific Profile",
     tabPanel(title = "CV",
-             includeMarkdown(path = "md_files/CV.md")),
+             includeMarkdown(path = "md_files/CV.md"),
+             actionButton("downloadBtn", "Download PDF")),
     tabPanel(title = "Scientific Profile",
              fluidRow(
                bs4ValueBox(value = dash_list$nPub,width = 4,
@@ -197,6 +200,31 @@ server = function(input, output) {
   output$table <- DT::renderDataTable({
     my_table()
   })
+
+  # Function to generate PDF from markdown
+
+  cv <- readLines("md_files/CV.md")  # Path to your CV.md file
+  cv_file <- file.path("www", "CV.Rmd")
+  writeLines(cv, cv_file)
+  pdf_file <- file.path("www", "CV.pdf")
+  render(here::here(cv_file),
+         output_format = "pdf_document",
+         output_file = here::here(pdf_file))
+
+
+  # Trigger download when the button is clicked
+  observeEvent(input$downloadBtn, {
+    pdf_file <- file.path("www", "CV.pdf")
+    if (file.exists(pdf_file)) {
+      output$downloadFile <- downloadHandler(
+        filename = "CV.pdf",
+        content = function(file) {
+          file.copy(here::here(pdf_file), file)
+        }
+      )
+    }
+  })
+
 }
 
 shinyApp(ui = ui,server = server)
