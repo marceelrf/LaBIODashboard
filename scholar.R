@@ -92,23 +92,49 @@ tidy_pubs <- scholar::get_publications(MRF)
 
 pmids <- list()
 
-query <- paste(paste0(tidy_pubs$title,"[TITL]"),collapse = " OR ")
+# ERROR - 414
+# query <- paste(paste0(tidy_pubs$title,"[TITL]"),collapse = " OR ")
+#
+# pmids <- entrez_search(db = "pubmed",
+#                        term = query,
+#                        use_history = TRUE)
+#
+#
+# fetch_pubmed <- entrez_fetch(db = "pubmed",
+#                              id = pmids$ids,
+#                              rettype = "xml",
+#                              parsed = TRUE)
+#
+# abstracts <- xpathApply(fetch_pubmed,
+#                         '//PubmedArticle//Article',
+#                         function(x) xmlValue(xmlChildren(x)$Abstract))
+#
+# Text <- abstracts %>% unlist() %>% paste(collapse = ".")
 
-pmids <- entrez_search(db = "pubmed",
-                       term = query,
-                       use_history = T)
+vec_rule <- c(seq(1,length(tidy_pubs$title), by = 20))
+for(i in vec_rule) {
+  final <- i + (20-1)
+  Text <- NULL
 
+  query <- (discard(tidy_pubs$title[i:final],is.na))
+  query <- paste(paste0(tmp,"[TITL]"),collapse = " OR ")
 
-fetch_pubmed <- entrez_fetch(db = "pubmed",
-                             id = pmids$ids,
-                             rettype = "xml",
-                             parsed = TRUE)
+  pmids <- entrez_search(db = "pubmed",
+                         term = query,
+                         use_history = TRUE)
 
-abstracts <- xpathApply(fetch_pubmed,
-                        '//PubmedArticle//Article',
-                        function(x) xmlValue(xmlChildren(x)$Abstract))
+  fetch_pubmed <- entrez_fetch(db = "pubmed",
+                               id = pmids$ids,
+                               rettype = "xml",
+                               parsed = TRUE)
 
-Text <- abstracts %>% unlist() %>% paste(collapse = ".")
+  abstracts <- xpathApply(fetch_pubmed,
+                          '//PubmedArticle//Article',
+                          function(x) xmlValue(xmlChildren(x)$Abstract))
+
+  Text <- append(Text,abstracts %>% unlist() %>% paste(collapse = "."))
+  Sys.sleep(1)
+}
 
 freq_tokens <- Text %>%
   tokenize_words() %>%
@@ -119,7 +145,7 @@ freq_tokens <- Text %>%
   count(tokens) %>%
   arrange(desc(n)) %>%
   #manual filter
-  filter(!(tokens %in% c("1","â","nha","wiley","2019")))
+  filter(!(tokens %in% c("1","â","nha","wiley","2019","elsevier","2020")))
 
 # save list to dash -------------------------------------------------------
 
