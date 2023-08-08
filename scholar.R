@@ -117,7 +117,7 @@ for(i in vec_rule) {
   Text <- NULL
 
   query <- (discard(tidy_pubs$title[i:final],is.na))
-  query <- paste(paste0(tmp,"[TITL]"),collapse = " OR ")
+  query <- paste(paste0(query,"[TITL]"),collapse = " OR ")
 
   pmids <- entrez_search(db = "pubmed",
                          term = query,
