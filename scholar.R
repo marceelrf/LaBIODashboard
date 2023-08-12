@@ -167,7 +167,7 @@ dash_list$hIndex <- tidy_pubs %>%
 #sugestion of 5 most relevant papers
 dash_list$tableSug <- tidy_pubs %>%
   select(title,cites,year,pubid) %>%
-  mutate(cites_py = cites/(1+2023-year)) %>%
+  mutate(cites_py = cites/(1+year(Sys.Date())-year)) %>%
   arrange(desc(cites_py)) %>%
   slice_head(n = 5) %>%
   select(title,pubid) %>%
