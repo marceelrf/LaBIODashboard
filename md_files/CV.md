@@ -40,7 +40,7 @@
 
 -   *Data consultant*, **since 2023**. dm2, fruits and juices.
 
--   *Postdoc* (CAPES scholarship), **since 2023**. GemBio - Molecular Genetics and Bioinformatics Laboratory - Experimental Research Unity, School of Medicine, UNESP Botucatu.
+-   *Postdoc* (*CAPES scholarship*), **since 2023**. GemBio - Molecular Genetics and Bioinformatics Laboratory - Experimental Research Unity, School of Medicine, UNESP Botucatu.
 
 ## Skills
 
