@@ -155,7 +155,7 @@ server = function(input, output) {
   output$wc <- wordcloud2::renderWordcloud2(
     wordcloud2(
       slice_max(dash_list$freq_tokens,order_by = n,n = 100,with_ties = F),
-               size = .4,
+               size = .75,
                minRotation = -pi/2,
                maxRotation = -pi/2,
       #color ="random-light",backgroundColor = "grey50"
