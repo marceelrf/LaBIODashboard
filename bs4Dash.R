@@ -99,7 +99,7 @@ body <- dashboardBody(
              ),
              fluidRow(
                bs4Card(
-                 dataTableOutput("table"),
+                 gt::gt_output("table"),
                  title = "selected publications",
                  width = 12)
                )
@@ -162,43 +162,57 @@ server = function(input, output) {
       ))
 
   my_table <- reactive({
-    datatable(
-      dash_list$tableSug,
-      options = list(
-        columnDefs = list(
-          list(
-            targets = 1,
-            render = JS(
-              "function(data, type, row, meta) {",
-              "  if (type === 'display') {",
-              "    return '<b><i>' + data + '</i></b>';",
-              "  } else {",
-              "    return data;",
-              "  }",
-              "}"
-            )
-          ),
-          list(
-            targets = 2,
-            render = JS(
-              "function(data, type, row, meta) {",
-              "  if (type === 'display') {",
-              "    return '<a href=\"' + data + '\">' + row[2] + '</a>';",
-              "  } else {",
-              "    return data;",
-              "  }",
-              "}"
-            )
-          )
-        ),
-        rownames = FALSE,
-        lengthMenu  = FALSE,
-        searching = FALSE
-      ),
-      escape = FALSE
-    )
+
+    dash_list$tableSug %>%
+      mutate(
+      url = map(url, ~ htmltools::a(href = .x, (as.character(.x)))),
+      url = map(url, ~ gt::html(as.character(.x)))
+    ) %>%
+      gt::gt() %>%
+      gt::cols_label(title = 'Title', year = "Year",url = 'link') %>%
+      gt::opt_interactive(
+        use_search = TRUE,
+        #use_filters = TRUE,
+        use_compact_mode = TRUE,
+        page_size_default = 5
+      )
+    # datatable(
+    #   dash_list$tableSug,
+    #   options = list(
+    #     columnDefs = list(
+    #       list(
+    #         targets = 1,
+    #         render = JS(
+    #           "function(data, type, row, meta) {",
+    #           "  if (type === 'display') {",
+    #           "    return '<b><i>' + data + '</i></b>';",
+    #           "  } else {",
+    #           "    return data;",
+    #           "  }",
+    #           "}"
+    #         )
+    #       ),
+    #       list(
+    #         targets = 2,
+    #         render = JS(
+    #           "function(data, type, row, meta) {",
+    #           "  if (type === 'display') {",
+    #           "    return '<a href=\"' + data + '\">' + row[2] + '</a>';",
+    #           "  } else {",
+    #           "    return data;",
+    #           "  }",
+    #           "}"
+    #         )
+    #       )
+    #     ),
+    #     rownames = FALSE,
+    #     lengthMenu  = FALSE,
+    #     searching = FALSE
+    #   ),
+    #   escape = FALSE
+    # )
   })
-  output$table <- DT::renderDataTable({
+  output$table <-gt::render_gt({
     my_table()
   })
 

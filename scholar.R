@@ -164,13 +164,13 @@ dash_list$hIndex <- tidy_pubs %>%
   filter(Cond == "Sim") %>%
   summarise(h = max(index)) %>%
   pull(h)
-#sugestion of 5 most relevant papers
+#sugestion of  most relevant papers
 dash_list$tableSug <- tidy_pubs %>%
   select(title,cites,year,pubid) %>%
   mutate(cites_py = cites/(1+year(Sys.Date())-year)) %>%
   arrange(desc(cites_py)) %>%
-  slice_head(n = 5) %>%
-  select(title,pubid) %>%
+  #slice_head(n = 5) %>%
+  select(title,year,pubid) %>%
   dplyr::group_by(title,pubid) %>%
   mutate(url = get_publication_url(id = MRF,pub_id = pubid)) %>%
   ungroup() %>%
