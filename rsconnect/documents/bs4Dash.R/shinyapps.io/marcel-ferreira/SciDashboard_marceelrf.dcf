@@ -1,0 +1,12 @@
+name: SciDashboard_marceelrf
+title: SciDashboard_marceelrf
+username:
+account: marcel-ferreira
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8710818
+bundleId: 7771774
+url: https://marcel-ferreira.shinyapps.io/SciDashboard_marceelrf/
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .github/workflows/ScholarPubmed.yml|about.html|Dashboard.R|plotly.R|pubmed.R|R/img/labio.jpg|R/img/rstudio.png|README.md|README.Rmd|scholar.R|wordcloud.R
