@@ -168,6 +168,8 @@ server = function(input, output) {
       url = map(url, ~ htmltools::a(href = .x, (as.character(.x)))),
       url = map(url, ~ gt::html(as.character(.x)))
     ) %>%
+      dplyr::ungroup() %>%
+      dplyr::select(-pubid) %>%
       gt::gt() %>%
       gt::cols_label(title = 'Title', year = "Year",url = 'link') %>%
       gt::opt_interactive(
