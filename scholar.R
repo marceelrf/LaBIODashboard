@@ -1,6 +1,6 @@
 library(scholar)
 #library(extrafont)
-#library(glue)
+library(glue)
 #library(plotly)
 library(tidyverse)
 library(rentrez)
@@ -179,3 +179,12 @@ dash_list$tableSug <- tidy_pubs %>%
 dash_list$tidycites <- scholar::get_citation_history(MRF)
 dash_list$freq_tokens <- freq_tokens
 readr::write_rds(x = dash_list,file = "data/dash_list.rds")
+
+
+###
+tmp <- tidy_pubs %>%
+  filter(number != "",
+         journal != "") %>%
+  mutate(citation = glue("{title} - {author}-{journal},{number},{year}"))
+
+write_lines(x = tmp$citation,file = "pubs.txt")

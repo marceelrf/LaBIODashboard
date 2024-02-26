@@ -1,0 +1,13 @@
+name: LaBIODashboard
+title: LaBIODashboard
+username: marcel-ferreira
+account: marcel-ferreira
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10261855
+bundleId: 8298446
+url: https://marcel-ferreira.shinyapps.io/LaBIODashboard/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Dashboard.R|md_files/CV.html|plotly.R|pubmed.R|README.md|README.Rmd|wordcloud.R
