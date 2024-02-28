@@ -10,6 +10,8 @@
 
 **Blog:** <https://quartodomarcel.netlify.app/>
 
+**ORCID:** <https://orcid.org/0000-0002-3445-0945>
+
 **online CV:** <https://marcel-ferreira.shinyapps.io/SciDashboard_marceelrf/>
 
 ## Education

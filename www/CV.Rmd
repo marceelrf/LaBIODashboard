@@ -10,6 +10,8 @@
 
 **Blog:** <https://quartodomarcel.netlify.app/>
 
+**online CV:** <https://marcel-ferreira.shinyapps.io/SciDashboard_marceelrf/>
+
 ## Education
 
 -   *PhD in Biotechnology* - **2023**. São Paulo State University (UNESP);
@@ -46,6 +48,18 @@
 
 -   *Postdoc* (*CAPES scholarship*), **since 2023**. GemBio - Molecular Genetics and Bioinformatics Laboratory - Experimental Research Unity, School of Medicine, UNESP Botucatu.
 
+## Grants and Fellowships
+
+-   CAPES postdoc fellowship (2023-2024);
+
+-   FAPESP BEPE fellowship (2022);
+
+-   FAPESP PhD fellowship (2018-2022);
+
+-   FAPESP Masters fellowship (2015-2017);
+
+-   CnPQ PIBIC fellowship (2013-2014);
+
 ## Skills
 
 -   *Communication*;
@@ -54,7 +68,7 @@
 
 -   *Problem-solving*;
 
--   Creative thinking;
+-   *Creative thinking*;
 
 -   *Transferable skills*;
 
@@ -115,3 +129,13 @@
 -   Cyclopamine targeting hedgehog modulates nuclear control of the osteoblast activity - CJ da Costa Fernandes, MR Ferreira, WF Zambuzzi-Cells & Development,174, 203836,2023
 
 -   Epigenetic Differences Arise in Endothelial Cells Responding to Cobalt--Chromium - CJ da C. Fernandes, RAF da Silva, GS de Almeida, MR Ferreira, ...-Journal of Functional Biomaterials,14 (3), 127,2023
+
+## References
+
+Prof dr Willian Zambuzzi - UNESP
+
+Prof dr Erick da Cruz Castelli - UNESP
+
+Prof dr Celso Teixeira Mendes Junior - USP
+
+Prof dr Lukasz Witek - NYU
